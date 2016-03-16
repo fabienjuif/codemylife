@@ -1,0 +1,30 @@
+{
+  "name": "codemylife",
+  "version": "0.1.0",
+  "description": "Listen to your nickname and can respond for you.",
+  "main": "app/index.js",
+  "scripts": {
+    "start": "node --harmony app/index.js",
+    "docker": "sudo docker-compose build && sudo docker-compose up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:fabienjuif/codemylife.git"
+  },
+  "keywords": [
+    "slackbot",
+    "bot",
+    "slack",
+    "codemylife"
+  ],
+  "author": "Fabien JUIF",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabienjuif/codemylife/issues"
+  },
+  "homepage": "https://github.com/fabienjuif/codemylife",
+  "dependencies": {
+    "botkit": "0.0.5",
+    "sugar": "^1.4.1"
+  }
+}
