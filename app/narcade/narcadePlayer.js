@@ -28,8 +28,8 @@ module.exports = (controller, playerName) => {
 
         // No matches, no chocolate
         if (matches.length === 0) {
-          bot.reply(message, 'Gné ? Tu veux pas laisser ' + playerName + ' tranquille au lieu de raconter n\'importe quoi !?')
-          return
+            bot.reply(message, 'Gné ? Tu veux pas laisser ' + playerName + ' tranquille au lieu de raconter n\'importe quoi !?')
+            return
         }
         bot.reply(message, 'Je compose son numéro... tututu ')
 
@@ -38,8 +38,8 @@ module.exports = (controller, playerName) => {
 
         // Message to send to NArcade
         var message = {
-          playerName: playerName,
-          action: code
+            playerName: playerName,
+            action: code
         }
 
         request.post('http://localhost:4000/actions', {

@@ -1,6 +1,7 @@
-'use strict'
-
 require('sugar')
+
+// botkit side
+
 const Botkit = require('botkit')
 const nickNames = ['fabien.juif']
 
@@ -26,10 +27,46 @@ nickNames.each(nickName => {
     require('./nick')(controller, nickName)
 })
 
+require('./narcade/narcade')(controller, ['fabien.juif', 'yvonnick'])
+
 controller.hears('.*', ['mention'], (bot, message) => {
-    bot.startConversation(message, (err, conversation) => {
-        conversation.say('Tu as des remarques sur moi ?! C\'est ça ?!')
-        setTimeout(() => conversation.say('Bon ok je ne suis pas infaillible, tu peux poster un bogue ici : https://github.com/fabienjuif/codemylife/issues'), 500)
-        setTimeout(() => conversation.say('Au fait ! Je connais les personnes suivantes : ' + nickNames.map(nickName => '@' + nickName)), 500)
+    var channel = message.channel
+
+    bot.reply(message, 'Tu as des remarques sur moi ?! C\'est ça ?!')
+
+    setTimeout(() => {
+        bot.say({
+            channel: channel,
+            text: 'Bon ok je ne suis pas infaillible, tu peux poster un bogue ici : https://github.com/fabienjuif/codemylife/issues'
+        })
+        setTimeout(() => {
+            bot.say({
+                channel: channel,
+                text: 'Au fait ! Je connais les personnes suivantes : ' + nickNames.map(nickName => '@' + nickName)
+            })
+        }, 2000)
+    }, 2000)
+})
+
+// Express side
+// TODO : Split express and botkit code in distincts file
+const app = require('express')()
+const http = require('http').Server(app)
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.json())
+
+app.post('/messages', (req, res) => {
+    console.log(req.body)
+
+    bot.say({
+        channel: 'G0T2RQ1J5',
+        text: JSON.stringify(req.body)
     })
+
+    res.end()
+})
+
+http.listen(3000, function() {
+    console.log('Listening')
 })
