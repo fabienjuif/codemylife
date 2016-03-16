@@ -1,0 +1,4 @@
+codemylife:
+  build: .
+  environment:
+    - SLACK_TOKEN=${SLACK_TOKEN}
