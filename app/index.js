@@ -29,7 +29,7 @@ nickNames.each(nickName => {
 
 require('./narcade/narcade')(controller, ['fabien.juif', 'yvonnick'])
 
-controller.hears('.*', ['mention'], (bot, message) => {
+controller.hears('.*', ['mention', 'direct_mention', 'direct_message'], (bot, message) => {
     var channel = message.channel
 
     bot.reply(message, 'Tu as des remarques sur moi ?! C\'est ça ?!')
@@ -40,11 +40,17 @@ controller.hears('.*', ['mention'], (bot, message) => {
             text: 'Bon ok je ne suis pas infaillible, tu peux poster un bogue ici : https://github.com/fabienjuif/codemylife/issues'
         })
         setTimeout(() => {
+          bot.say({
+            channel: channel,
+            text: '... essaie de taper "NArcade" ;)'
+          })
+        })
+        /*setTimeout(() => {
             bot.say({
                 channel: channel,
                 text: 'Au fait ! Je connais les personnes suivantes : ' + nickNames.map(nickName => '@' + nickName)
             })
-        }, 2000)
+        }, 2000)*/
     }, 2000)
 })
 
@@ -61,7 +67,7 @@ app.post('/messages', (req, res) => {
 
     bot.say({
         channel: 'G0T2RQ1J5',
-        text: JSON.stringify(req.body)
+        text: req.body.text
     })
 
     res.end()
