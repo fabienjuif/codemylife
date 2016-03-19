@@ -37,7 +37,7 @@ controller.hears('.*', ['mention', 'direct_mention', 'direct_message'], (bot, me
     setTimeout(() => {
         bot.say({
             channel: channel,
-            text: 'Bon ok je ne suis pas infaillible, tu peux poster un bogue ici : https://github.com/fabienjuif/codemylife/issues'
+            text: 'Bon ok je ne suis pas infaillible, tu peux poster un bogue ici : https://github.com/fabienjuif/narcade-bot/issues'
         })
         setTimeout(() => {
           bot.say({

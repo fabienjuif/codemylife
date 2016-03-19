@@ -1,5 +1,5 @@
 {
-  "name": "codemylife",
+  "name": "narcade-bot",
   "version": "0.1.0",
   "description": "Listen to your nickname and can respond for you.",
   "main": "app/index.js",
@@ -9,20 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:fabienjuif/codemylife.git"
+    "url": "git+ssh://git@github.com:fabienjuif/narcade-bot.git"
   },
   "keywords": [
     "slackbot",
     "bot",
     "slack",
-    "codemylife"
+    "narcade-bot"
   ],
   "author": "Fabien JUIF",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fabienjuif/codemylife/issues"
+    "url": "https://github.com/fabienjuif/narcade-bot/issues"
   },
-  "homepage": "https://github.com/fabienjuif/codemylife",
+  "homepage": "https://github.com/fabienjuif/narcade-bot",
   "dependencies": {
     "botkit": "0.0.5",
     "express": "^4.13.4",

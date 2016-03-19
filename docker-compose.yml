@@ -1,4 +1,4 @@
-codemylife:
+narcade-bot:
   build: .
   environment:
     - SLACK_TOKEN=${SLACK_TOKEN}
