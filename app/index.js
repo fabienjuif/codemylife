@@ -73,6 +73,7 @@ app.post('/messages', (req, res) => {
     res.end()
 })
 
-http.listen(3000, function() {
-    console.log('Listening')
+const port = 3000
+http.listen(port, function() {
+    console.log('Listening *:' + port)
 })

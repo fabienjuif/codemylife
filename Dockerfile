@@ -4,6 +4,7 @@ COPY package.json /
 COPY node_modules /node_modules
 COPY app /app
 
+EXPOSE 3000
 ENV SLACK_TOKEN ""
 
 RUN \
