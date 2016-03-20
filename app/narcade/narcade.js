@@ -1,6 +1,6 @@
-module.exports = (controller, playersName) => {
+module.exports = (controller, playersName, globalsChannels) => {
     for (playerName of playersName) {
-        require('./narcadePlayer')(controller, playerName)
+        require('./narcadePlayer')(controller, playerName, globalsChannels)
     }
 
     controller.hears('[nN][aA]rcade help', ['ambient', 'direct_mention', 'direct_message'], (bot, message) => {
@@ -39,15 +39,15 @@ module.exports = (controller, playersName) => {
     })
 
     controller.hears('[nN][Aa]rcade', ['ambient', 'direct_mention', 'direct_message'], (bot, message) => {
-      var channel = message.channel
+        var channel = message.channel
 
-      bot.reply(message, 'Je crois que tu cherches ce lien : http://192.168.1.29/') // TODO
+        bot.reply(message, 'Je crois que tu cherches ce lien : http://192.168.1.29/') // TODO
 
-      setTimeout(() => {
-          bot.say({
-            channel: channel,
-            text: '(Tu peux aussi taper "narcade help" si tu as besoin d\'aide)'
-          })
-      }, 1000)
+        setTimeout(() => {
+            bot.say({
+                channel: channel,
+                text: '(Tu peux aussi taper "narcade help" si tu as besoin d\'aide)'
+            })
+        }, 1000)
     })
 }

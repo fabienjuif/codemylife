@@ -27,7 +27,12 @@ nickNames.each(nickName => {
     require('./nick')(controller, nickName)
 })
 
-require('./narcade/narcade')(controller, ['fabien.juif', 'yvonnick'])
+// Channels to print globals messages like deaths or scores.
+var globalsChannels = []
+require('./narcade/narcade')(controller, ['fabien.juif', 'yvonnick'], (channel) => {
+    globalsChannels.push(channel)
+    globalsChannels = globalsChannels.unique()
+})
 
 controller.hears('.*', ['mention', 'direct_mention', 'direct_message'], (bot, message) => {
     var channel = message.channel
@@ -40,17 +45,17 @@ controller.hears('.*', ['mention', 'direct_mention', 'direct_message'], (bot, me
             text: 'Bon ok je ne suis pas infaillible, tu peux poster un bogue ici : https://github.com/fabienjuif/narcade-bot/issues'
         })
         setTimeout(() => {
-          bot.say({
-            channel: channel,
-            text: '... essaie de taper "NArcade" ;)'
-          })
-        })
-        /*setTimeout(() => {
-            bot.say({
-                channel: channel,
-                text: 'Au fait ! Je connais les personnes suivantes : ' + nickNames.map(nickName => '@' + nickName)
+                bot.say({
+                    channel: channel,
+                    text: '... essaie de taper "NArcade" ;)'
+                })
             })
-        }, 2000)*/
+            /*setTimeout(() => {
+                bot.say({
+                    channel: channel,
+                    text: 'Au fait ! Je connais les personnes suivantes : ' + nickNames.map(nickName => '@' + nickName)
+                })
+            }, 2000)*/
     }, 2000)
 })
 
@@ -63,12 +68,12 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 app.post('/messages', (req, res) => {
-    console.log(req.body)
-
-    bot.say({
-        channel: 'G0T2RQ1J5',
-        text: req.body.text
-    })
+    for (channel of globalsChannels) {
+        bot.say({
+            channel: channel,
+            text: req.body.text
+        })
+    }
 
     res.end()
 })

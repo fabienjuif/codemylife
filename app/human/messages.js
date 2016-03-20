@@ -1,13 +1,9 @@
-module.exports = [
-  {
+module.exports = [{
     key: 'narcade_help_1',
-    values: [
-      {
+    values: [{
         text: '',
         timeout: 2000,
         values: []
-      }
-    ]
+    }]
 
-  }
-]
+}]
