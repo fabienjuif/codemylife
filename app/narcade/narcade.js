@@ -41,7 +41,7 @@ module.exports = (controller, playersName, globalsChannels) => {
     controller.hears('[nN][Aa]rcade', ['ambient', 'direct_mention', 'direct_message'], (bot, message) => {
         var channel = message.channel
 
-        bot.reply(message, 'Je crois que tu cherches ce lien : http://192.168.1.29/') // TODO
+        bot.reply(message, 'Je crois que tu cherches ce lien : http://narcade.chocakai.org/') // TODO
 
         setTimeout(() => {
             bot.say({
